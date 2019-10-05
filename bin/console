@@ -2,6 +2,8 @@
 
 require "bundler/setup"
 require "holiday_crochet_patterns"
+require_relative "../lib/holiday_crochet_patterns/command_line_interface.rb"
+# require_relative "../lib/holiday_crochet_patterns/scraper"
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
@@ -10,5 +12,7 @@ require "holiday_crochet_patterns"
 # require "pry"
 # Pry.start
 
-require "irb"
-IRB.start(__FILE__)
+# require "irb"
+# IRB.start(__FILE__)
+
+CommandLineInterface.new.run
