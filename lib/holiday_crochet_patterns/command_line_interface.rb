@@ -1,16 +1,13 @@
-require_relative "scraper"
+require_relative 'scraper'
 require 'nokogiri'
-require 'paint'
-using Paint
-Paint.mode = 256
 
 class CommandLineInterface
-  HALLOWEEN_COLORS = ['#F75F1C', '#FF9A00', '#881EE4', '#85E21F']
-
   def run
-    puts "\nWelcome to your " + to_halloween_colors("Halloween") + " crochet pattern database!"
+
+    puts "\nWelcome to your Halloween crochet pattern database!"
+
     patterns = CrochetScraper.scrape_halloween_pattern_titles
-    patterns.each_with_index { |pattern, index| puts "#{to_halloween_colors((index + 1).to_s)}. #{pattern[:title]}" }
+    patterns.each_with_index { |pattern, index| puts "#{index + 1}. #{pattern[:title]}" }
 
     pick_pattern(patterns)
   end
@@ -20,13 +17,13 @@ class CommandLineInterface
 
     input = gets.strip
     index = input_to_index(input)
-    if valid_input?(index, patterns.length)
+    if valid_input?(index, patterns.length - 1)
       # pattern is a hash with keys(:title, :url_path)
       pattern = patterns[index]
       # Call scaper method to get details from url from patterns array
-      puts "\n" + to_halloween_colors("Title") + ": #{pattern[:title]}\n"
+      puts "\nTitle: #{pattern[:title]}\n"
       pattern_info = CrochetScraper.scrape_halloween_pattern_by_path(pattern[:url_path])
-      pattern_info.each { |key, value| puts "#{to_halloween_colors(key.to_s.capitalize)}: #{value}\n" }
+      pattern_info.each { |key, value| puts "#{key}: #{value}\n" }
     else
       pick_pattern(patterns)
     end
@@ -38,9 +35,5 @@ class CommandLineInterface
 
   def valid_input?(index, patterns_len)
     index.between?(0, patterns_len)
-  end
-
-  def to_halloween_colors(str)
-    str.chars.map { |char| Paint[char, HALLOWEEN_COLORS.sample] }.join 
   end
 end

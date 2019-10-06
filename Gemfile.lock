@@ -12,7 +12,6 @@ GEM
     mini_portile2 (2.4.0)
     nokogiri (1.10.0)
       mini_portile2 (~> 2.4.0)
-    paint (2.1.1)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -37,8 +36,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 2.0)
   holiday_crochet_patterns!
-  nokogiri (= 1.10)
-  paint
+  nokogiri
   pry
   rake (~> 10.0)
   rspec

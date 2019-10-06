@@ -1,4 +1,4 @@
-require "holiday_crochet_patterns/version"
+require 'holiday_crochet_patterns/version'
 require 'nokogiri'
 require 'open-uri'
 require 'pry'
