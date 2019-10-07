@@ -21,9 +21,9 @@ class CommandLineInterface
       # pattern is a hash with keys(:title, :url_path)
       pattern = patterns[index]
       # Call scaper method to get details from url from patterns array
-      puts "\nTitle: #{pattern[:title]}\n"
+      puts "\n\nTitle: #{pattern[:title]}\n"
       pattern_info = CrochetScraper.scrape_holiday_pattern_by_path(pattern[:url_path])
-      pattern_info.each { |key, value| puts "#{key}: #{value}\n" }
+      pattern_info.each { |key, value| puts "\n#{key}: #{value}\n" }
     else
       pick_pattern(patterns)
     end
