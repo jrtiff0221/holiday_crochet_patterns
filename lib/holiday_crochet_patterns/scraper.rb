@@ -5,19 +5,19 @@ require 'pry'
 class CrochetScraper
   BASE_PATH = "https://www.allfreecrochet.com"
 
-  def self.scrape_halloween_pattern_titles
+  def self.scrape_holiday_pattern_titles
     doc = CrochetScraper.get_doc_from_url(BASE_PATH + '/Holiday-Crochet-Patterns')
 
-    
-    halloween_pattern_cards = doc.css('.articleHeadline a')
 
-    # We filter out articles that contain multiple patterns like 30 cool halloween costume patterns
-    halloween_pattern_cards.map { |a|
+    holiday_pattern_cards = doc.css('.articleHeadline a')
+
+    # We filter out articles that contain multiple patterns like 30 cool holiday costume patterns
+    holiday_pattern_cards.map { |a|
       { :title => a.text, :url_path => a[:href] }
     }.reject { |pattern_hash| pattern_hash[:title].split.any? { |word| Integer(word) rescue false } }
   end
 
-  def self.scrape_halloween_pattern_by_path(url_path)
+  def self.scrape_holiday_pattern_by_path(url_path)
     # Attributes on pattern page
     # Difficulty
     # Pattern Link

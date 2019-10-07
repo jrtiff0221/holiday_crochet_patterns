@@ -4,9 +4,9 @@ require 'nokogiri'
 class CommandLineInterface
   def run
 
-    puts "\nWelcome to your Halloween crochet pattern program!"
+    puts "\nWelcome to your Holiday crochet pattern program!"
 
-    patterns = CrochetScraper.scrape_halloween_pattern_titles
+    patterns = CrochetScraper.scrape_holiday_pattern_titles
     patterns.each_with_index { |pattern, index| puts "#{index + 1}. #{pattern[:title]}" }
 
     pick_pattern(patterns)
@@ -22,7 +22,7 @@ class CommandLineInterface
       pattern = patterns[index]
       # Call scaper method to get details from url from patterns array
       puts "\nTitle: #{pattern[:title]}\n"
-      pattern_info = CrochetScraper.scrape_halloween_pattern_by_path(pattern[:url_path])
+      pattern_info = CrochetScraper.scrape_holiday_pattern_by_path(pattern[:url_path])
       pattern_info.each { |key, value| puts "#{key}: #{value}\n" }
     else
       pick_pattern(patterns)
