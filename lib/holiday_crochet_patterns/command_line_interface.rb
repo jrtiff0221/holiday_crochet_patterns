@@ -4,7 +4,7 @@ require 'nokogiri'
 class CommandLineInterface
   def run
 
-    puts "\nWelcome to your Halloween crochet pattern program!"
+    puts "\nWelcome to your Halloween crochet pattern programexit!"
 
     patterns = CrochetScraper.scrape_halloween_pattern_titles
     patterns.each_with_index { |pattern, index| puts "#{index + 1}. #{pattern[:title]}" }
