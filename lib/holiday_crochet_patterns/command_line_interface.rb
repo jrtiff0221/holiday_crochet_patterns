@@ -3,7 +3,6 @@ require 'nokogiri'
 
 class CommandLineInterface
   def run
-
     puts "\nWelcome to your Holiday crochet pattern program!"
 
     patterns = CrochetScraper.scrape_holiday_pattern_titles
@@ -24,8 +23,18 @@ class CommandLineInterface
       puts "\n\nTitle: #{pattern[:title]}\n"
       pattern_info = CrochetScraper.scrape_holiday_pattern_by_path(pattern[:url_path])
       pattern_info.each { |key, value| puts "\n#{key}: #{value}\n" }
+
+      pick_another_pattern
     else
       pick_pattern(patterns)
+    end
+  end
+
+  def pick_another_pattern
+    puts "\n\nWould you like to pick another pattern? Please enter Yes or No."
+    input = gets.strip
+    if input.downcase == 'yes'
+      run
     end
   end
 
