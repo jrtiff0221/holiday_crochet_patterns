@@ -33,6 +33,11 @@ class CommandLineInterface
   def pick_another_pattern
     puts "\n\nWould you like to pick another pattern? Please enter Yes or No."
     input = gets.strip
+
+    if input.downcase != 'yes' && input.downcase != 'no'
+      pick_another_pattern
+    end
+
     if input.downcase == 'yes'
       run
     end
